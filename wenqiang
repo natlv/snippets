@@ -3,10 +3,13 @@
 
 int main() {
     FILE *file = fopen("proj2.txt", "r");
+
+    /* (This part just checks if file exists. It is commented, you can delete if you want.)
     if (file == NULL) {
         fprintf(stderr, "Failed to open the file.\n");
         return 1;
     }
+    */
 
     int max_values = 5040; // Set an appropriate maximum number of values
     int values[max_values];
