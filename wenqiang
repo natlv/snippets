@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    FILE *file = fopen("proj2.txt", "r");
+    if (file == NULL) {
+        fprintf(stderr, "Failed to open the file.\n");
+        return 1;
+    }
+
+    int max_values = 5040; // Set an appropriate maximum number of values
+    int values[max_values];
+    int count = 0;
+    int num;
+
+    while (count < max_values && fscanf(file, "%d", &num) == 1) {
+        values[count] = num;
+        count++;
+        // Check for the space character and consume it
+        int c = fgetc(file);
+        if (c != ' ') {
+            break; // Exit the loop if the space isn't found
+        }
+    }
+
+    fclose(file);
+
+    // Now, the 'values' array contains the space-separated integers
+    for (int i = 0; i < count; i++) {
+        printf("Value %d: %d\n", i + 1, values[i]);
+    }
+
+    return 0;
+}
